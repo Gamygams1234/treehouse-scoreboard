@@ -1,9 +1,15 @@
-// create element has three arguments tag, properties, then the children
-const title = React.createElement("h1", { id: "main-title", title: "This is a title" }, "my react element");
-const desc = React.createElement("p", null, "I am Gay, I am broke as shit, Carole Baskins killed her husband");
+// React.createElement("h1", { id: "main-title", title: "This is a title" }, "my react element")
+const name = "Gamy";
+// React.createElement("p", null, "I am Gay, I am broke as shit, Carole Baskins killed her husband");
+const desc = <p>I am Gay, I am broke as shit, Carole Baskins killed her husband</p>;
+const myTitleID = "main-title";
 // here we can pass all of the information on the header element
-const header = React.createElement("header", null, title, desc);
+const header = (
+  <header>
+    <h1 id={myTitleID}>{name}'s React Element</h1>
+    {desc}
+  </header>
+);
 
-// this has two arguments,(the element we want to render, and the HTML element we want to Update)
-// reacts jus manages what gets rendered to the DOM
+// with the compiler, these elements get rendered to the DOM uding JSX
 ReactDOM.render(header, document.getElementById("root"));
