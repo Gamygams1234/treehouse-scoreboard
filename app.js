@@ -9,7 +9,12 @@ const Header = (props) => {
 const Player = (props) => {
   return (
     <div className="player">
-      <span className="player-name">{props.name}</span>
+      <span className="player-name">
+        <button className="remove-player" onClick={() => props.handleRemovePlayer(props.id)}>
+          ✖
+        </button>
+        {props.name}
+      </span>
       <Counter />
     </div>
   );
@@ -36,6 +41,7 @@ class Counter extends React.Component {
       };
     });
   };
+
   render() {
     return (
       <div className="counter">
@@ -59,6 +65,14 @@ class App extends React.Component {
       { name: "Joe Exotic", id: 3 },
     ],
   };
+  // the handle remove player is in the App component and it passed to the Players list from there
+  handleRemovePlayer = (id) => {
+    this.setState((prevState) => {
+      return {
+        players: prevState.players.filter((player) => player.id !== id),
+      };
+    });
+  };
   render() {
     return (
       <div className="scoreboard">
@@ -66,7 +80,7 @@ class App extends React.Component {
 
         {/* Players list */}
         {this.state.players.map((player) => {
-          return <Player key={player.id} name={player.name} />;
+          return <Player key={player.id} id={player.id} name={player.name} handleRemovePlayer={this.handleRemovePlayer} />;
         })}
       </div>
     );
