@@ -1,7 +1,7 @@
 const players = [
-  { name: "Gamy", score: 100 },
-  { name: "Lisa", score: 50 },
-  { name: "Joe Exotic", score: 9000 },
+  { name: "Gamy", score: 100, id: 1 },
+  { name: "Lisa", score: 50, id: 2 },
+  { name: "Joe Exotic", score: 9000, id: 3 },
 ];
 
 const Header = (props) => {
@@ -38,7 +38,7 @@ const App = (props) => {
 
       {/* Players list */}
       {props.initalPlayers.map((player) => {
-        return <Player name={player.name} score={player.score} />;
+        return <Player key={player.id} name={player.name} score={player.score} />;
       })}
     </div>
   );
