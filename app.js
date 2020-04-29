@@ -13,6 +13,18 @@ const Header = () => {
     </header>
   );
 };
+const Player = () => {
+  return (
+    <div className="player">
+      <span className="player-name">Gamy</span>
+      <div className="counter">
+        <button className="counter-action decrement">-</button>
+        <span className="counter-score">35</span>
+        <button className="counter-action increment">+</button>
+      </div>
+    </div>
+  );
+};
 
 // with the compiler, these elements get rendered to the DOM uding JSX
-ReactDOM.render(<Header />, document.getElementById("root"));
+ReactDOM.render(<Player />, document.getElementById("root"));
