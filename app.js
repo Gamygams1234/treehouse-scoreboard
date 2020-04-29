@@ -31,6 +31,15 @@ const Counter = () => {
     </div>
   );
 };
+const App = () => {
+  return (
+    <div className="scoreboard">
+      <Header />
+      {/* Players list */}
+      <Player />
+    </div>
+  );
+};
 
 // with the compiler, these elements get rendered to the DOM uding JSX
-ReactDOM.render(<Player />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById("root"));
