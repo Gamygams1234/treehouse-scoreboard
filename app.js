@@ -1,10 +1,9 @@
-// you can write an impicit returm by omitting curly braces and the return keyword
-// const Header = () => (
-//     <header>
-//       <h1>Scoereboard</h1>
-//       <span className="stats">Players:1</span>
-//     </header>
-//   );
+const players = [
+  { name: "Gamy", score: 100 },
+  { name: "Lisa", score: 50 },
+  { name: "Joe Exotic", score: 9000 },
+];
+
 const Header = (props) => {
   return (
     <header>
@@ -31,16 +30,19 @@ const Counter = (props) => {
     </div>
   );
 };
-const App = () => {
+
+const App = (props) => {
   return (
     <div className="scoreboard">
-      <Header title="Scoreboard" totalPlayers={1} />
+      <Header title="Scoreboard" totalPlayers={props.initalPlayers.length} />
+
       {/* Players list */}
-      <Player name="Gamy" score={5} />
-      <Player name="John" score={5} />
+      {props.initalPlayers.map((player) => {
+        return <Player name={player.name} score={player.score} />;
+      })}
     </div>
   );
 };
 
 // with the compiler, these elements get rendered to the DOM uding JSX
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App initalPlayers={players} />, document.getElementById("root"));
