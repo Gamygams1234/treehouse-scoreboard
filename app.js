@@ -21,23 +21,25 @@ const Player = (props) => {
   );
 };
 
-const Counter = (props) => {
-  return (
-    <div className="counter">
-      <button className="counter-action decrement">-</button>
-      <span className="counter-score">{props.score}</span>
-      <button className="counter-action increment">+</button>
-    </div>
-  );
-};
+class Counter extends React.Component {
+  render() {
+    return (
+      <div className="counter">
+        <button className="counter-action decrement">-</button>
+        <span className="counter-score">{this.props.score}</span>
+        <button className="counter-action increment">+</button>
+      </div>
+    );
+  }
+}
 
 const App = (props) => {
   return (
     <div className="scoreboard">
-      <Header title="Scoreboard" totalPlayers={props.initalPlayers.length} />
+      <Header title="Scoreboard" totalPlayers={props.initialPlayers.length} />
 
       {/* Players list */}
-      {props.initalPlayers.map((player) => {
+      {props.initialPlayers.map((player) => {
         return <Player key={player.id} name={player.name} score={player.score} />;
       })}
     </div>
@@ -45,4 +47,4 @@ const App = (props) => {
 };
 
 // with the compiler, these elements get rendered to the DOM uding JSX
-ReactDOM.render(<App initalPlayers={players} />, document.getElementById("root"));
+ReactDOM.render(<App initialPlayers={players} />, document.getElementById("root"));
